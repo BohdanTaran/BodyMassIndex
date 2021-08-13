@@ -9,31 +9,31 @@ extern HINSTANCE hInst;
 
 LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	static HWND hTextHeight, // Òåêñò "Ââåäèòå ñâîé ğîñò (ÑÌ)" 
-				hTextMass, // Òåêñò "Ââåäèòå ñâîé âåñ" 
-				hEnterHeight, // Ïîëå äëÿ ââîäà ğîñòà
-				hEnterMass, // Ïîëå äëÿ ââîäà âåñà
-				hBtnRes, hBtnClear, // Êíîïêà ğåçóëüòàòà è î÷èñòêè
-				hTextRes, // Òåêñò "Ğåçóëüòàò"
-				hViewRes, // Ïîëå ğåçóëüòàòà
-				hTextResOut; // Âûâîä ğåçóëüòàòà òåêñòîì
+	static HWND hTextHeight, // Ğ¢ĞµĞºÑÑ‚ "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ÑĞ²Ğ¾Ğ¹ Ñ€Ğ¾ÑÑ‚ (Ğ¡Ğœ)" 
+				hTextMass, // Ğ¢ĞµĞºÑÑ‚ "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ÑĞ²Ğ¾Ğ¹ Ğ²ĞµÑ" 
+				hEnterHeight, // ĞŸĞ¾Ğ»Ğµ Ğ´Ğ»Ñ Ğ²Ğ²Ğ¾Ğ´Ğ° Ñ€Ğ¾ÑÑ‚Ğ°
+				hEnterMass, // ĞŸĞ¾Ğ»Ğµ Ğ´Ğ»Ñ Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ²ĞµÑĞ°
+				hBtnRes, hBtnClear, // ĞšĞ½Ğ¾Ğ¿ĞºĞ° Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ° Ğ¸ Ğ¾Ñ‡Ğ¸ÑÑ‚ĞºĞ¸
+				hTextRes, // Ğ¢ĞµĞºÑÑ‚ "Ğ ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚"
+				hViewRes, // ĞŸĞ¾Ğ»Ğµ Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ°
+				hTextResOut; // Ğ’Ñ‹Ğ²Ğ¾Ğ´ Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ° Ñ‚ĞµĞºÑÑ‚Ğ¾Ğ¼
 
-	static HFONT hFontTextHeight, // Ñîçäàíèå øğèôòà òåêñòó ñ ğîñòîì
-				 hFontTextMass, // Ñîçäàíèå øğèôòà òåêñòó ñ âåñîì
-				 hFontEnterHeight, // Ñîçäàíèå øğèôòà ïîëş ââîäà ñ ğîñòîì
-			   	 hFontEnterMass, // Ñîçäàíèå øğèôòà ïîëş ââîäà ñ âåñîì
-				 hFontBtnRes, hFontBtnClear, // Øğèôò äëÿ êíîïêè âû÷èñëåíèÿ è î÷èñòêè
-				 hFontTextRes, // Øğèôò äëÿ "Ğåçóëüòàò"
-				 hFontView, // Øğèôò äëÿ ïîëÿ ñ ğåçóëüòàòîì
-				 hFontTextResOut; // Øğèôò äëÿ âûâîäà ğåçóëüòàòà òåêñòîì
+	static HFONT hFontTextHeight, // Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ ÑˆÑ€Ğ¸Ñ„Ñ‚Ğ° Ñ‚ĞµĞºÑÑ‚Ñƒ Ñ Ñ€Ğ¾ÑÑ‚Ğ¾Ğ¼
+				 hFontTextMass, // Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ ÑˆÑ€Ğ¸Ñ„Ñ‚Ğ° Ñ‚ĞµĞºÑÑ‚Ñƒ Ñ Ğ²ĞµÑĞ¾Ğ¼
+				 hFontEnterHeight, // Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ ÑˆÑ€Ğ¸Ñ„Ñ‚Ğ° Ğ¿Ğ¾Ğ»Ñ Ğ²Ğ²Ğ¾Ğ´Ğ° Ñ Ñ€Ğ¾ÑÑ‚Ğ¾Ğ¼
+			   	 hFontEnterMass, // Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ ÑˆÑ€Ğ¸Ñ„Ñ‚Ğ° Ğ¿Ğ¾Ğ»Ñ Ğ²Ğ²Ğ¾Ğ´Ğ° Ñ Ğ²ĞµÑĞ¾Ğ¼
+				 hFontBtnRes, hFontBtnClear, // Ğ¨Ñ€Ğ¸Ñ„Ñ‚ Ğ´Ğ»Ñ ĞºĞ½Ğ¾Ğ¿ĞºĞ¸ Ğ²Ñ‹Ñ‡Ğ¸ÑĞ»ĞµĞ½Ğ¸Ñ Ğ¸ Ğ¾Ñ‡Ğ¸ÑÑ‚ĞºĞ¸
+				 hFontTextRes, // Ğ¨Ñ€Ğ¸Ñ„Ñ‚ Ğ´Ğ»Ñ "Ğ ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚"
+				 hFontView, // Ğ¨Ñ€Ğ¸Ñ„Ñ‚ Ğ´Ğ»Ñ Ğ¿Ğ¾Ğ»Ñ Ñ Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ¾Ğ¼
+				 hFontTextResOut; // Ğ¨Ñ€Ğ¸Ñ„Ñ‚ Ğ´Ğ»Ñ Ğ²Ñ‹Ğ²Ğ¾Ğ´Ğ° Ñ€ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚Ğ° Ñ‚ĞµĞºÑÑ‚Ğ¾Ğ¼
 
-	static double userHeight, userMass; // Èíôîğìàöèÿ î ïîëüçîâàòåëå
-	static double res; // Ğåçóëüòàò
+	static double userHeight, userMass; // Ğ˜Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ñ Ğ¾ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ğµ
+	static double res; // Ğ ĞµĞ·ÑƒĞ»ÑŒÑ‚Ğ°Ñ‚
 	
 	switch (message)
 	{
 	case WM_CREATE:
-		hTextHeight = CreateWindow("static", "Ââåäèòå ñâîé ğîñò:", WS_VISIBLE | WS_CHILD, 15, 5, 200, 30, hwnd, 0, hInst, 0);
+		hTextHeight = CreateWindow("static", "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ÑĞ²Ğ¾Ğ¹ Ñ€Ğ¾ÑÑ‚:", WS_VISIBLE | WS_CHILD, 15, 5, 200, 30, hwnd, 0, hInst, 0);
 		hFontTextHeight = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hTextHeight, WM_SETFONT, WPARAM(hFontTextHeight), TRUE);
 		hEnterHeight = CreateWindow("edit", "", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_NUMBER, 15, 45, 300, 30, hwnd, 0, hInst, 0);
@@ -41,21 +41,21 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SendMessage(hEnterHeight, WM_SETFONT, WPARAM(hFontEnterHeight), TRUE);
 		SetFocus(hEnterHeight);
 
-		hTextMass = CreateWindow("static", "Ââåäèòå ñâîé âåñ:", WS_VISIBLE | WS_CHILD, 15, 110, 200, 30, hwnd, 0, hInst, 0);
+		hTextMass = CreateWindow("static", "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ÑĞ²Ğ¾Ğ¹ Ğ²ĞµÑ:", WS_VISIBLE | WS_CHILD, 15, 110, 200, 30, hwnd, 0, hInst, 0);
 		hFontTextMass = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hTextMass, WM_SETFONT, WPARAM(hFontTextMass), TRUE);
 		hEnterMass = CreateWindow("edit", "", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_NUMBER, 15, 150, 300, 30, hwnd, 0, hInst, 0);
 		hFontEnterMass = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hEnterMass, WM_SETFONT, WPARAM(hFontEnterMass), TRUE);
 
-		hBtnRes = CreateWindow("button", "Âû÷èñëèòü", WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON, 15, 210, 140, 50, hwnd, 0, hInst, 0);
+		hBtnRes = CreateWindow("button", "Ğ’Ñ‹Ñ‡Ğ¸ÑĞ»Ğ¸Ñ‚ÑŒ", WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON, 15, 210, 140, 50, hwnd, 0, hInst, 0);
 		hFontBtnRes = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hBtnRes, WM_SETFONT, WPARAM(hFontBtnRes), TRUE);
-		hBtnClear = CreateWindow("button", "Î÷èñòèòü", WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON, 175, 210, 140, 50, hwnd, 0, hInst, 0);
+		hBtnClear = CreateWindow("button", "ĞÑ‡Ğ¸ÑÑ‚Ğ¸Ñ‚ÑŒ", WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON, 175, 210, 140, 50, hwnd, 0, hInst, 0);
 		hFontBtnClear = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hBtnClear, WM_SETFONT, WPARAM(hFontBtnClear), TRUE);
 
-		hTextRes = CreateWindow("static", "Ğåóëüòàò:", WS_VISIBLE | WS_CHILD, 15, 300, 100, 30, hwnd, 0, hInst, 0);
+		hTextRes = CreateWindow("static", "Ğ ĞµÑƒĞ»ÑŒÑ‚Ğ°Ñ‚:", WS_VISIBLE | WS_CHILD, 15, 300, 100, 30, hwnd, 0, hInst, 0);
 		hFontTextRes = CreateFont(20, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_SWISS, "Arial");
 		SendMessage(hTextRes, WM_SETFONT, WPARAM(hFontTextRes), TRUE);
 		hViewRes = CreateWindow("edit", "", WS_VISIBLE | WS_CHILD | WS_BORDER | ES_READONLY, 15, 340, 300, 30, hwnd, 0, hInst, 0);
@@ -73,7 +73,7 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 			userHeight = atof(str);
 			if (userHeight > 273 || userHeight < 54)
 			{
-				MessageBox(hwnd, "Ëşäåé ñ òàêèì ğîñòîì åù¸ íå áûëî. Ïîæàëóéñòà ââåäèòå ïğàâèëüíîå çíà÷åíèå!", "Îøèáêà!", MB_OK|MB_ICONINFORMATION);
+				MessageBox(hwnd, "Ğ›ÑĞ´ĞµĞ¹ Ñ Ñ‚Ğ°ĞºĞ¸Ğ¼ Ñ€Ğ¾ÑÑ‚Ğ¾Ğ¼ ĞµÑ‰Ñ‘ Ğ½Ğµ Ğ±Ñ‹Ğ»Ğ¾. ĞŸĞ¾Ğ¶Ğ°Ğ»ÑƒĞ¹ÑÑ‚Ğ° Ğ²Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿Ñ€Ğ°Ğ²Ğ¸Ğ»ÑŒĞ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ!", "ĞÑˆĞ¸Ğ±ĞºĞ°!", MB_OK|MB_ICONINFORMATION);
 			}
 			else
 			{
@@ -83,7 +83,7 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 				userMass = atof(str);
 				if (userMass <= 0)
 				{ 
-					MessageBox(hwnd, "Çàïîëíèòå ïîëå ñ ìàññîé!", "Îøèáêà!", MB_OK | MB_ICONINFORMATION);
+					MessageBox(hwnd, "Ğ—Ğ°Ğ¿Ğ¾Ğ»Ğ½Ğ¸Ñ‚Ğµ Ğ¿Ğ¾Ğ»Ğµ Ñ Ğ¼Ğ°ÑÑĞ¾Ğ¹!", "ĞÑˆĞ¸Ğ±ĞºĞ°!", MB_OK | MB_ICONINFORMATION);
 				}
 				else
 				{
@@ -94,23 +94,23 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 					if (res < 18.5)
 					{
-						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Íèæå íîğìàëüíîãî âåñà!");
+						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"ĞĞ¸Ğ¶Ğµ Ğ½Ğ¾Ñ€Ğ¼Ğ°Ğ»ÑŒĞ½Ğ¾Ğ³Ğ¾ Ğ²ĞµÑĞ°!");
 					}
 					else if (res >= 18.5 && res < 25)
 					{
-						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ó âàñ íîğìàëüíûé âåñ");
+						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ğ£ Ğ²Ğ°Ñ Ğ½Ğ¾Ñ€Ğ¼Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ²ĞµÑ");
 					}
 					else if (res >= 25 && res < 30)
 					{
-						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ó âàñ ëèøíèé âåñ");
+						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ğ£ Ğ²Ğ°Ñ Ğ»Ğ¸ÑˆĞ½Ğ¸Ğ¹ Ğ²ĞµÑ");
 					}
 					else if (res >= 30 && res < 35)
 					{
-						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ó âàñ îæèğåíèå!");
+						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ğ£ Ğ²Ğ°Ñ Ğ¾Ğ¶Ğ¸Ñ€ĞµĞ½Ğ¸Ğµ!");
 					}
 					else
 					{
-						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Âû èíòåğåñíûé ÷åëîâåê ;)");
+						SendMessage(hTextResOut, WM_SETTEXT, 256, (LPARAM)(TCHAR*)"Ğ’Ñ‹ Ğ¸Ğ½Ñ‚ĞµÑ€ĞµÑĞ½Ñ‹Ğ¹ Ñ‡ĞµĞ»Ğ¾Ğ²ĞµĞº ;)");
 					}
 				}
 			}
@@ -126,11 +126,11 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_DESTROY:
-			        PostQuitMessage(0); //êîğğåêòíàÿ îáğàáîòêà îêîí÷àíèÿ ñîîáùåíèÿ
+			        PostQuitMessage(0); //ĞºĞ¾Ñ€Ñ€ĞµĞºÑ‚Ğ½Ğ°Ñ Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ¾Ñ‚ĞºĞ° Ğ¾ĞºĞ¾Ğ½Ñ‡Ğ°Ğ½Ğ¸Ñ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ
 			        break;
 	default:
 		return
-			DefWindowProc(hwnd,message,wParam,lParam);//âîçâğàò íåîòğàáîòàííîãî ñîîáùåíèÿ
+			DefWindowProc(hwnd,message,wParam,lParam);//Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚ Ğ½ĞµĞ¾Ñ‚Ñ€Ğ°Ğ±Ğ¾Ñ‚Ğ°Ğ½Ğ½Ğ¾Ğ³Ğ¾ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ
 	}
 	return 0L;
 }
